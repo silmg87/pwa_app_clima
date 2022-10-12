@@ -113,6 +113,7 @@ const iconos = [
 ];
 
 
+// DECLARACION DE VARIABLES
 const APIKEY = '9dcc1818ed8b1b9cf09902249070fb83';
 const btn = document.getElementById('buscar');
 const inputCiudad = document.getElementById('inputCiudad');
@@ -173,6 +174,9 @@ const resultadoClima = (json) => {
 
     let liMin = document.createElement('li');
     liMin.innerHTML = `<span>Temperatura Mínima</span> <span>${Math.round(json.main.temp_min)}°</span>`;
+
+    let liHum = document.createElement('li');
+    liHum.innerHTML = `<span>Húmedad</span> <span>${Math.round(json.main.humidity)}%</span>`;
 
     let liSt = document.createElement('li');
     liSt.innerHTML = `<span>Sensación Térmica</span> <span>${Math.round(json.main.feels_like)}°</span>`;
@@ -241,5 +245,5 @@ btn.addEventListener('click', event => {
 
     .catch(error=>{console.log(`Ocurrió un error: ${error}`)})
 
-    
+    inputCiudad.value = '';
 });
