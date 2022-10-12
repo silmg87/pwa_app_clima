@@ -10,11 +10,8 @@ ul {
     padding: 0;
 }
 
-ul li {
-    text-decoration: none;
-}
-
 body {
+    /* FONDO UTILIZADO https://coolors.co/gradient/696eff-f8acff */
     background: hsla(238, 100%, 71%, 1);
     background: linear-gradient(90deg, hsla(238, 100%, 71%, 1) 0%, hsla(295, 100%, 84%, 1) 100%);
     background: -moz-linear-gradient(90deg, hsla(238, 100%, 71%, 1) 0%, hsla(295, 100%, 84%, 1) 100%);
@@ -22,8 +19,8 @@ body {
     filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#696EFF", endColorstr="#F8ACFF", GradientType=1 );
     background-repeat: no-repeat;
     background-position: center center;
-    height: 100vh;
     color: white;
+    background-attachment: fixed;
 }
 
 .clima {
@@ -46,8 +43,45 @@ main {
     margin: 0 auto;
 }
 
-main div:nth-child(2),
-main div:nth-child(3) {
-    width: 75%;
+section div:nth-child(2),
+section div:nth-child(3) {
+    width: 100%;
     margin: 1.5em auto;
+}
+
+ul li {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    width: 95%;
+    margin: 0 auto;
+    font-size: 1.1em;
+    padding-bottom: .5em;
+}
+
+#zona p,
+#temperaturaInfo div p {
+    font-style: italic;
+    font-size: 1.5em;
+}
+
+img {
+    max-width: 200px;
+}
+
+
+@media screen and (min-width: 1024px) {
+    main div:nth-child(2),
+    main div:nth-child(3) {
+    width: 75%;
+    }
+
+    ul li {
+        width: 75%;
+    }
+
+    #mapa {
+        width: 700px;
+    }
+    
 }
