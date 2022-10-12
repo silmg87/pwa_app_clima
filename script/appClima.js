@@ -115,14 +115,17 @@ const iconos = [
 
 // DECLARACION DE VARIABLES
 const APIKEY = '9dcc1818ed8b1b9cf09902249070fb83';
+const fondo = document.body;
 const btn = document.getElementById('buscar');
 const inputCiudad = document.getElementById('inputCiudad');
 const APIKEYMAPA = 'hE3wpAzogyZc3rgzoZJCGCFXQ8TLgF9k';
 let recuperar_localStorage;
 let recuperarMapa_localStorage;
 
+//fondo.style.backgroundColor = 'background: hsla(238, 100%, 71%, 1); background: linear-gradient(90deg, hsla(238, 100%, 71%, 1) 0%, hsla(295, 100%, 84%, 1) 100%); background: -moz-linear-gradient(90deg, hsla(238, 100%, 71%, 1) 0%, hsla(295, 100%, 84%, 1) 100%); background: -webkit-linear-gradient(90deg, hsla(238, 100%, 71%, 1) 0%, hsla(295, 100%, 84%, 1) 100%); filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#696EFF", endColorstr="#F8ACFF", GradientType=1 );';
 
 // FUNCION DOM DEL CLIMA
+
 let divClima = document.createElement('div');
 divClima.id = 'clima';
 
@@ -222,6 +225,7 @@ const resultadoMapa = () => {
 // EVENTO CLICK "BUSCAR"
 btn.addEventListener('click', event => {
     event.preventDefault();
+
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${inputCiudad.value}&appid=${APIKEY}&units=metric&lang=es`)
     .then(response=>{
         console.log(`Respuesta: ${response}`, response);
@@ -231,8 +235,15 @@ btn.addEventListener('click', event => {
     .then(json=>{
         console.log(json)
 
-        resultadoClima(json);
+        for (let i of iconos) {
+            let icon = json.weather[0].icon;
+            if (icon === i.id) {
+                fondo.style.backgroundColor = i.fondo;
+            } 
+        }
 
+        resultadoClima(json);
+    
         latitud = json.coord.lat;
         
         longitud = json.coord.lon;
@@ -247,3 +258,28 @@ btn.addEventListener('click', event => {
 
     inputCiudad.value = '';
 });
+
+
+const MostrarLocalStorage = () => {
+
+    if(!localStorage.getItem('busqueda') && !localStorage.getItem('mapa')) {
+       recuperar_localStorage;
+       recuperarMapa_localStorage;
+    } else {
+        resultadoClima(recuperar_localStorage = JSON.parse(localStorage.busqueda));
+        
+        let divMapa = document.createElement('div');
+        let imgMapa = document.createElement('img');
+
+        imgMapa.className = 'rounded';
+        imgMapa.id = 'mapa';
+        recuperarMapa_localStorage = JSON.parse(localStorage.mapa);
+        imgMapa.src = recuperarMapa_localStorage;
+        
+        divMapa.append(imgMapa);
+        divClima.append(divMapa);
+
+    }
+};
+
+MostrarLocalStorage();
