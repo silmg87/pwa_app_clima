@@ -21,6 +21,11 @@ body {
     background-position: center center;
     color: white;
     background-attachment: fixed;
+    font-family: 'Open Sans', sans-serif;
+}
+
+h1 {
+    font-weight: 700;
 }
 
 .clima {
@@ -35,7 +40,14 @@ body {
 }
 
 #temperaturaActual p {
-    font-size: 4em;
+    font-size: 5em;
+    font-weight: 700;
+}
+
+#descripcion p {
+    font-size: 1.5em;
+    font-weight: 500;
+    font-style: italic;
 }
 
 main {
@@ -59,10 +71,9 @@ ul li {
     padding-bottom: .5em;
 }
 
-#zona p,
-#temperaturaInfo div p {
-    font-style: italic;
+#zona {
     font-size: 1.5em;
+    font-weight: 500;
 }
 
 img {
