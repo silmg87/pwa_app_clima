@@ -1,3 +1,118 @@
+'use strict';
+
+// ARRAY DE ICONOS Y DESCRIPCIONES
+const iconos = [
+    {
+        id: '01d',
+        descripcion: 'Soleado',
+        imagen: '../imagenes/soleado.png',
+        alt: 'Día Soleado',
+    },
+    {
+        id: '01n',
+        descripcion: 'Cielo despejado',
+        imagen: '../imagenes/noche-despejada.png',
+        alt: 'Noche Despejada',
+    },
+    {
+        id: '02d',
+        descripcion: 'Parcialmente nublado con sol',
+        imagen: '../imagenes/dia-nublado.png',
+        alt: 'Día Nublado',
+    },
+    {
+        id: '02n',
+        descripcion: 'Pacialmente nublado',
+        imagen: '../imagenes/noche-nublada.png',
+        alt: 'Noche Nublada',
+    },
+    {
+        id: '03d',
+        descripcion: 'Mayormente nublado',
+        imagen: '../imagenes/nubes.png',
+        alt: 'Día Nublado',
+    },
+    {
+        id: '03n',
+        descripcion: 'Mayormente nublado',
+        imagen: '../imagenes/nubes.png',
+        alt: 'Noche Nublada',
+    },
+    {
+        id: '04d',
+        descripcion: 'Mayormente nublado',
+        imagen: '../imagenes/nubes.png',
+        alt: 'Día Nublado',
+    },
+    {
+        id: '04n',
+        descripcion: 'Mayormente nublado',
+        imagen: '../imagenes/nubes.png',
+        alt: 'Noche Nublada',
+    },  
+    {
+        id: '09d',
+        descripcion: 'Cielo cubierto con lloviznas',
+        imagen: '../imagenes/llovizna.png',
+        alt: 'Día con lloviznas',
+    },
+    {
+        id: '09n',
+        descripcion: 'Cielo cubierto con lloviznas',
+        imagen: '../imagenes/llovizna.png',
+        alt: 'Noche con lloviznas',
+    },
+    {
+        id: '10d',
+        descripcion: 'Parcialmente nublado con lluvias',
+        imagen: '../imagenes/dia-lluvioso.png',
+        alt: 'Día con lluvias',
+    },
+    {
+        id: '10n',
+        descripcion: 'Parcialmente nublado con lluvias',
+        imagen: '../imagenes/noche-lluviosa.png',
+        alt: 'Noche con luvias',
+    },
+    {
+        id: '11d',
+        descripcion: 'Tormentas eléctricas',
+        imagen: '../imagenes/tormenta.png',
+        alt: 'Día con tormenta',
+    },
+    {
+        id: '11n',
+        descripcion: 'Tormentas eléctricas',
+        imagen: '../imagenes/tormenta.png',
+        alt: 'Noche con tormenta',
+    },
+    {
+        id: '13d',
+        descripcion: 'Nevadas',
+        imagen: '../imagenes/nieve.png',
+        alt: 'Día con nevadas',
+    },
+    {
+        id: '13n',
+        descripcion: 'Nevadas',
+        imagen: '../imagenes/nieve.png',
+        alt: 'Noche con nevadas',
+    },
+    {
+        id: '50d',
+        descripcion: 'Neblinas',
+        imagen: '../imagenes/niebla.png',
+        alt: 'Día con nieblas',
+    },
+    {
+        id: '50n',
+        descripcion: 'Neblinas',
+        imagen: '../imagenes/niebla.png',
+        alt: 'Noche con nieblas',
+    },
+];
+
+
 const APIKEY = '9dcc1818ed8b1b9cf09902249070fb83';
 const btn = document.getElementById('buscar');
 const inputCiudad = document.getElementById('inputCiudad');
