@@ -3,7 +3,6 @@
     padding: 0;
     box-sizing: border-box;
     line-height: 1.5em;
-    /* outline: 1px solid red; */
 }
 
 ul {
@@ -12,11 +11,7 @@ ul {
 
 body {
     /* FONDO UTILIZADO https://coolors.co/gradient/696eff-f8acff */
-    background: hsla(238, 100%, 71%, 1);
-    background: linear-gradient(90deg, hsla(238, 100%, 71%, 1) 0%, hsla(295, 100%, 84%, 1) 100%);
-    background: -moz-linear-gradient(90deg, hsla(238, 100%, 71%, 1) 0%, hsla(295, 100%, 84%, 1) 100%);
     background: -webkit-linear-gradient(90deg, hsla(238, 100%, 71%, 1) 0%, hsla(295, 100%, 84%, 1) 100%);
-    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#696EFF", endColorstr="#F8ACFF", GradientType=1 );
     background-repeat: no-repeat;
     background-position: center center;
     color: white;
@@ -24,13 +19,13 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
-h1 {
-    font-weight: 700;
+main {
+    max-width: 1024px;
+    margin: 0 auto;
 }
 
-.clima {
-    background-color: rgba(255, 255, 255, .3);
-    margin: 0px 20px;
+h1 {
+    font-weight: 600;
 }
 
 [type=submit]:not(:disabled) {
@@ -39,9 +34,36 @@ h1 {
     font-weight: bold;
 }
 
+section div:nth-child(2),
+section div:nth-child(3) {
+    width: 100%;
+    margin: 1.5em auto;
+}
+
+.clima {
+    background-color: rgba(255, 255, 255, .3);
+    margin: 0px 20px;
+}
+
+#zona {
+    margin-top: 1em;
+    font-size: 1.5em;
+    font-weight: 700;
+}
+
+#zona p::before {
+    content: url(../imagenes/ubicacion.png);
+    margin-right: 8px;
+}
+
+.icono {
+    max-width: 60%;
+    max-height: 60%;
+}
+
 #temperaturaActual p {
     font-size: 5em;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 #descripcion p {
@@ -50,49 +72,31 @@ h1 {
     font-style: italic;
 }
 
-main {
-    max-width: 1024px;
-    margin: 0 auto;
-}
-
-section div:nth-child(2),
-section div:nth-child(3) {
-    width: 100%;
-    margin: 1.5em auto;
+ul {
+    margin: 3em 0;
 }
 
 ul li {
     list-style-type: none;
     display: flex;
     justify-content: space-between;
-    width: 95%;
+    max-width: 500px;
     margin: 0 auto;
     font-size: 1.1em;
-    padding-bottom: .5em;
-}
-
-#zona {
-    font-size: 1.5em;
+    padding-bottom: .8em;
     font-weight: 500;
+    font-family: 'Open Sans', sans-serif;
 }
 
-img {
-    max-width: 200px;
+#mapa {
+    max-width: 100%;
+    max-height: 100%;
+    margin-bottom: 1.5em;
 }
-
 
 @media screen and (min-width: 1024px) {
     main div:nth-child(2),
     main div:nth-child(3) {
     width: 75%;
     }
-
-    ul li {
-        width: 75%;
-    }
-
-    #mapa {
-        width: 700px;
-    }
-    
 }
