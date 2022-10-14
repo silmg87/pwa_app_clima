@@ -115,17 +115,14 @@ const iconos = [
 
 // DECLARACION DE VARIABLES
 const APIKEY = '9dcc1818ed8b1b9cf09902249070fb83';
-const fondo = document.body;
 const btn = document.getElementById('buscar');
 const inputCiudad = document.getElementById('inputCiudad');
 const APIKEYMAPA = 'hE3wpAzogyZc3rgzoZJCGCFXQ8TLgF9k';
 let recuperar_localStorage;
 let recuperarMapa_localStorage;
 
-//fondo.style.backgroundColor = 'background: hsla(238, 100%, 71%, 1); background: linear-gradient(90deg, hsla(238, 100%, 71%, 1) 0%, hsla(295, 100%, 84%, 1) 100%); background: -moz-linear-gradient(90deg, hsla(238, 100%, 71%, 1) 0%, hsla(295, 100%, 84%, 1) 100%); background: -webkit-linear-gradient(90deg, hsla(238, 100%, 71%, 1) 0%, hsla(295, 100%, 84%, 1) 100%); filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#696EFF", endColorstr="#F8ACFF", GradientType=1 );';
 
 // FUNCION DOM DEL CLIMA
-
 let divClima = document.createElement('div');
 divClima.id = 'clima';
 
@@ -145,7 +142,7 @@ const resultadoClima = (json) => {
     for (let i of iconos) {
         let icon = json.weather[0].icon;
         if (icon === i.id) {
-            divImg.innerHTML = `<img src="${i.imagen}" alt="${i.alt}"/>`;
+            divImg.innerHTML = `<img class="icono" src="${i.imagen}" alt="${i.alt}"/>`;
         } 
     }
 
@@ -204,7 +201,7 @@ let latitud;
 let longitud;
 
 const resultadoMapa = () => {
-    fetch(`https://api.tomtom.com/map/1/staticimage?layer=basic&style=main&format=png&key=${APIKEYMAPA}&zoom=7&center=${`${longitud},${latitud}`}&width=300&height=300&view=AR&language=es-ES`)
+    fetch(`https://api.tomtom.com/map/1/staticimage?layer=basic&style=main&format=png&key=${APIKEYMAPA}&zoom=9&center=${`${longitud},${latitud}`}&width=500&height=300&view=AR&language=es-ES`)
 
             .then(response=>{
                 let divMapa = document.createElement('div');
@@ -235,17 +232,9 @@ btn.addEventListener('click', event => {
     .then(json=>{
         console.log(json)
 
-        for (let i of iconos) {
-            let icon = json.weather[0].icon;
-            if (icon === i.id) {
-                fondo.style.backgroundColor = i.fondo;
-            } 
-        }
-
         resultadoClima(json);
     
         latitud = json.coord.lat;
-        
         longitud = json.coord.lon;
 
         console.log(latitud, longitud);
@@ -278,7 +267,6 @@ const MostrarLocalStorage = () => {
         
         divMapa.append(imgMapa);
         divClima.append(divMapa);
-
     }
 };
 
