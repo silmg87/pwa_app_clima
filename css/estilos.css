@@ -19,6 +19,21 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
+.error {
+    width: 800px;
+    margin: 0 auto;
+    padding: 8px;
+    text-align: center;
+    font-size: 1.3em;
+    color:darkred;
+    font-weight: 600;
+}
+
+.error::before {
+    content: url(../imagenes/error.png);
+    margin: auto 5px;
+}
+
 main {
     max-width: 1024px;
     margin: 0 auto;
