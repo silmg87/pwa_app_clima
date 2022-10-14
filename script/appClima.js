@@ -222,30 +222,41 @@ const resultadoMapa = () => {
 // EVENTO CLICK "BUSCAR"
 btn.addEventListener('click', event => {
     event.preventDefault();
-
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${inputCiudad.value}&appid=${APIKEY}&units=metric&lang=es`)
-    .then(response=>{
-        console.log(`Respuesta: ${response}`, response);
-        return response.json();
-    })
-
-    .then(json=>{
-        console.log(json)
-
-        resultadoClima(json);
     
-        latitud = json.coord.lat;
-        longitud = json.coord.lon;
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${inputCiudad.value}&appid=${APIKEY}&units=metric&lang=es`)
+        .then(response=>{
+            return response.json();
+        })
 
-        console.log(latitud, longitud);
-        resultadoMapa(longitud, latitud);
+        .then(json=>{
+            console.log(json)
+
+            resultadoClima(json);
         
-        recuperar_localStorage = localStorage.setItem("busqueda", JSON.stringify(json));
-    })
+            latitud = json.coord.lat;
+            longitud = json.coord.lon;
 
-    .catch(error=>{console.log(`Ocurrió un error: ${error}`)})
+            console.log(latitud, longitud);
+            resultadoMapa(longitud, latitud);
+            
+            recuperar_localStorage = localStorage.setItem("busqueda", JSON.stringify(json));
+        })
 
-    inputCiudad.value = '';
+        .catch(error=>{ 
+            let divError = document.createElement('div');
+            divError.className = 'error';
+            let body = document.querySelector('body');
+            body.append(divError);
+            divError.innerHTML = `Oops, ha ocurrido un error!<br/>
+                            Verifique que vaya ingresado una ciudad e intentelo nuevamente.`;
+
+            setTimeout(() => {
+                divError.remove();
+            },
+            5000); 
+        })
+        
+        inputCiudad.value = '';
 });
 
 
